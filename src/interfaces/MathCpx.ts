@@ -29,6 +29,14 @@ export interface MathCpx {
 	conjugate(Z: number | ComplexNumber): ComplexNumber
 
 	/**
+	 * Returns the square root of the given real/complex number.
+	 * 
+	 * @param Z The input real/complex number.
+	 * @returns The square root of the input, as a {@link ComplexNumber}.
+	 */
+	sqrt(Z: number | ComplexNumber): ComplexNumber
+
+	/**
 	 * Adds two real or complex values.
 	 *
 	 * @param a First operand.

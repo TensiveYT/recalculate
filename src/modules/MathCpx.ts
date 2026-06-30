@@ -20,6 +20,22 @@ export const MathCpx: MathCpxType = {
 			-zy
 		)
 	},
+	sqrt: (Z) => {
+		let zx = typeof Z === 'number' ? Z : Z.x,
+		    zy = typeof Z === 'number' ? 0 : Z.y
+		
+		let r = Math.hypot(zx, zy)
+
+		let real = Math.sqrt((r + zx) / 2)
+		let imag = Math.sqrt((r - zx) / 2)
+
+		if (zy < 0) imag = -imag
+		
+		return new ComplexNumber(
+			real, 
+			imag
+		)
+	},
 	add: (A, B) => {
 		let ax = typeof A === 'number' ? A : A.x,
 		    ay = typeof A === 'number' ? 0 : A.y
