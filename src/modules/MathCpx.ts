@@ -11,6 +11,12 @@ export const MathCpx: MathCpxType = {
 			? v
 			: new ComplexNumber(v, 0)
 	},
+	conjugate(input: number | ComplexNumber) {
+		let A = this.toComplex(input)
+
+		let complex = new ComplexNumber(A.x, -A.y)
+		return complex
+	},
 	add(a: number | ComplexNumber, b: number | ComplexNumber) {
 		let A = this.toComplex(a)
 		let B = this.toComplex(b)

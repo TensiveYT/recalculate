@@ -7,14 +7,26 @@ import { ComplexNumber } from '../classes/ComplexNumber.js'
  */
 export interface MathCpx {
 	/**
-	 * Converts a value to a `ComplexNumber`.
+	 * Converts a value to a {@link ComplexNumber}.
 	 *
-	 * - If the input is already a `ComplexNumber`, it is returned unchanged.
+	 * - If the input is already a {@link ComplexNumber}, it is returned unchanged.
 	 * - If the input is a real number, it is converted to `a + 0i`.
 	 *
 	 * @param input The value to convert.
 	 */
 	toComplex(input: number | ComplexNumber): ComplexNumber
+
+	/**
+	 * Returns the complex conjugate of the given number.
+	 *
+	 * If the input is a real number, it is treated as a complex number with zero imaginary part,
+	 * and the result is identical to the input. If the input is a complex number, the sign of the
+	 * imaginary component is inverted while the real component remains unchanged.
+	 *
+	 * @param input A real number or a complex number to conjugate.
+	 * @returns The complex conjugate of the input as a {@link ComplexNumber}.
+	 */
+	conjugate(input: number | ComplexNumber): ComplexNumber
 
 	/**
 	 * Adds two real or complex values.
