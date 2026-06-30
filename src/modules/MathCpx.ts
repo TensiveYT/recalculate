@@ -6,71 +6,81 @@ import { ComplexNumber } from '../classes/ComplexNumber.js'
 
 /* code */
 export const MathCpx: MathCpxType = {
-	toComplex(v: number | ComplexNumber) {
-		return v instanceof ComplexNumber
-			? v
-			: new ComplexNumber(v, 0)
+	toComplex: (N) => {
+		return typeof N === 'number'
+			? new ComplexNumber(N, 0)
+			: N
 	},
-	conjugate(input: number | ComplexNumber) {
-		let A = this.toComplex(input)
+	conjugate: (Z) => {
+		let zx = typeof Z === 'number' ? Z : Z.x,
+		    zy = typeof Z === 'number' ? 0 : Z.y
 
-		let complex = new ComplexNumber(A.x, -A.y)
-		return complex
-	},
-	add(a: number | ComplexNumber, b: number | ComplexNumber) {
-		let A = this.toComplex(a)
-		let B = this.toComplex(b)
-
-		let complex = new ComplexNumber(
-			A.x + B.x, 
-			A.y + B.y
+		return new ComplexNumber(
+			zx,
+			-zy
 		)
-
-		return complex
 	},
-	sub(a: number | ComplexNumber, b: number | ComplexNumber) {
-		let A = this.toComplex(a)
-		let B = this.toComplex(b)
+	add: (A, B) => {
+		let ax = typeof A === 'number' ? A : A.x,
+		    ay = typeof A === 'number' ? 0 : A.y
 
-		let complex = new ComplexNumber(
-			A.x - B.x, 
-			A.y - B.y
-		)
-
-		return complex
-	},
-	mul(a: number | ComplexNumber, b: number | ComplexNumber) {
-		let A = this.toComplex(a)
-		let B = this.toComplex(b)
+		let bx = typeof B === 'number' ? B : B.x,
+		    by = typeof B === 'number' ? 0 : B.y
 		
-		let complex = new ComplexNumber(
-			A.x * B.x - A.y * B.y, 
-			A.x * B.y + A.y * B.x
+		return new ComplexNumber(
+			ax + bx, 
+			ay + by
 		)
-		
+	},
+	sub: (A, B) => {
+		let ax = typeof A === 'number' ? A : A.x,
+		    ay = typeof A === 'number' ? 0 : A.y
+
+		let bx = typeof B === 'number' ? B : B.x,
+		    by = typeof B === 'number' ? 0 : B.y
+
+		let complex = new ComplexNumber(
+			ax - bx, 
+			ay - by
+		)
+
 		return complex
 	},
-	pow(a: number | ComplexNumber, b: number | ComplexNumber) {
-		let XY = this.toComplex(a)
-		let UV = this.toComplex(b)
+	mul: (A, B) => {
+		let ax = typeof A === 'number' ? A : A.x,
+		    ay = typeof A === 'number' ? 0 : A.y
 
-		if (XY.x === 0 && XY.y === 0)
+		let bx = typeof B === 'number' ? B : B.x,
+		    by = typeof B === 'number' ? 0 : B.y 
+		
+		return new ComplexNumber(
+			ax * bx - ay * by, 
+			ax * by + ay * bx
+		)
+	},
+	pow: (A, B) => {
+		let ax = typeof A === 'number' ? A : A.x,
+		    ay = typeof A === 'number' ? 0 : A.y
+
+		let bx = typeof B === 'number' ? B : B.x,
+		    by = typeof B === 'number' ? 0 : B.y 
+
+		if (ax === 0 && ay === 0)
 			return new ComplexNumber(0, 0)
 
-		let x = XY.x, y = XY.y
-		let u = UV.x, v = UV.y
+		let r = Math.hypot(ax, ay)
+		let T = Math.atan2(ay, ax)
 
-		let r = Math.hypot(x, y)
-		let T = Math.atan2(y, x)
+		let l = Math.log(r)
 
-		let A = u * Math.log(r) - v * T
-		let B = u * T + v * Math.log(r)
+		let As = bx * l - by * T
+		let Bs = bx * T + by * l
+
+		let e = Math.exp(As)
 		
-		let complex = new ComplexNumber(
-			Math.exp(A) * Math.cos(B), 
-			Math.exp(A) * Math.sin(B)
+		return new ComplexNumber(
+			e * Math.cos(Bs), 
+			e * Math.sin(Bs)
 		)
-		
-		return complex
 	}
 }

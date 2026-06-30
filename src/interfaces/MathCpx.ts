@@ -12,9 +12,9 @@ export interface MathCpx {
 	 * - If the input is already a {@link ComplexNumber}, it is returned unchanged.
 	 * - If the input is a real number, it is converted to `a + 0i`.
 	 *
-	 * @param input The value to convert.
+	 * @param N The value to convert.
 	 */
-	toComplex(input: number | ComplexNumber): ComplexNumber
+	toComplex(N: number | ComplexNumber): ComplexNumber
 
 	/**
 	 * Returns the complex conjugate of the given number.
@@ -23,10 +23,10 @@ export interface MathCpx {
 	 * and the result is identical to the input. If the input is a complex number, the sign of the
 	 * imaginary component is inverted while the real component remains unchanged.
 	 *
-	 * @param input A real number or a complex number to conjugate.
+	 * @param Z The real/complex number to conjugate.
 	 * @returns The complex conjugate of the input as a {@link ComplexNumber}.
 	 */
-	conjugate(input: number | ComplexNumber): ComplexNumber
+	conjugate(Z: number | ComplexNumber): ComplexNumber
 
 	/**
 	 * Adds two real or complex values.
@@ -35,7 +35,7 @@ export interface MathCpx {
 	 * @param b Second operand.
 	 * @returns The sum of the two operands.
 	 */
-	add(a: number | ComplexNumber, b: number | ComplexNumber): ComplexNumber
+	add(A: number | ComplexNumber, B: number | ComplexNumber): ComplexNumber
 
 	/**
 	 * Subtracts two real or complex values.
@@ -44,7 +44,7 @@ export interface MathCpx {
 	 * @param b Second operand.
 	 * @returns The difference of the two operands.
 	 */
-	sub(a: number | ComplexNumber, b: number | ComplexNumber): ComplexNumber
+	sub(A: number | ComplexNumber, B: number | ComplexNumber): ComplexNumber
 
 	/**
 	 * Multiplies two real or complex values.
@@ -52,7 +52,7 @@ export interface MathCpx {
 	 * @param b Second operand.
 	 * @returns The product of the two operands.
 	 */
-	mul(a: number | ComplexNumber, b: number | ComplexNumber): ComplexNumber
+	mul(A: number | ComplexNumber, B: number | ComplexNumber): ComplexNumber
 
 	/**
 	 * Raises a value to a power in the complex number system.
@@ -61,5 +61,5 @@ export interface MathCpx {
 	 * @param b Exponent value.
 	 * @returns The power of the two operands.
 	 */
-	pow(a: number | ComplexNumber, b: number | ComplexNumber): ComplexNumber
+	pow(A: number | ComplexNumber, B: number | ComplexNumber): ComplexNumber
 }
