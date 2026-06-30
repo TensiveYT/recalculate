@@ -1,0 +1,28 @@
+{
+  	"name": "recalculate",
+  	"version": "1.0.0",
+  	"description": "A big, fast math library for Node.JS.",
+  	"keywords": [
+  	  	"fast",
+  	  	"math",
+  	  	"library"
+  	],
+  	"homepage": "https://github.com/TensiveYT/recalculate#readme",
+  	"bugs": {
+  	  	"url": "https://github.com/TensiveYT/recalculate/issues"
+  	},
+  	"repository": {
+  	  	"type": "git",
+  	  	"url": "git+https://github.com/TensiveYT/recalculate.git"
+  	},
+  	"license": "ISC",
+  	"author": "King Tensive",
+  	"type": "module",
+  	"main": "dist/index.js",
+  	"scripts": {
+  	  	"test": "node test/index.js"
+  	},
+  	"devDependencies": {
+  	  	"typescript": "^6.0.3"
+  	}
+}
